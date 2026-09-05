@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self' https://fonts.gstatic.com;">
+  <title>DeepTutor Desktop</title>
+  <link rel="stylesheet" href="splash.css">
+</head>
+<body>
+  <div class="window-container">
+    <!-- Fond d'ambiance dynamique -->
+    <div class="glow-orb glow-orb-1"></div>
+    <div class="glow-orb glow-orb-2"></div>
+
+    <!-- En-tête de l'application -->
+    <header class="app-header">
+      <div class="logo-wrapper">
+        <img src="assets/logo.svg" alt="DeepTutor Logo" class="app-logo">
+        <div class="pulse-ring"></div>
+      </div>
+      <div class="branding">
+        <h1 class="brand-title">DeepTutor</h1>
+        <p class="brand-subtitle">Lifelong Personalized Tutoring</p>
+      </div>
+    </header>
+
+    <!-- Carte principale de chargement -->
+    <main class="main-card">
+      <!-- Indicateur d'étapes visuel -->
+      <div class="steps-tracker">
+        <div class="step-item active" id="step-0">
+          <div class="step-node">
+            <span class="step-number">1</span>
+            <svg class="check-icon" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <span class="step-label">Docker</span>
+        </div>
+        <div class="step-line" id="line-0"></div>
+
+        <div class="step-item" id="step-1">
+          <div class="step-node">
+            <span class="step-number">2</span>
+            <svg class="check-icon" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <span class="step-label">Mise à jour</span>
+        </div>
+        <div class="step-line" id="line-1"></div>
+
+        <div class="step-item" id="step-2">
+          <div class="step-node">
+            <span class="step-number">3</span>
+            <svg class="check-icon" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <span class="step-label">Conteneurs</span>
+        </div>
+        <div class="step-line" id="line-2"></div>
+
+        <div class="step-item" id="step-3">
+          <div class="step-node">
+            <span class="step-number">4</span>
+            <svg class="check-icon" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <span class="step-label">DeepTutor</span>
+        </div>
+      </div>
+
+      <!-- Statut et animation -->
+      <div class="status-section">
+        <div class="status-badge" id="status-badge">
+          <span class="spinner-dot"></span>
+          <span class="badge-text" id="badge-text">Démarrage</span>
+        </div>
+        <p class="status-message" id="status-message">Vérification de l'environnement Docker...</p>
+        <p class="status-detail" id="status-detail">Initialisation de la connexion avec le démon Docker local</p>
+
+        <!-- Barre de progression continue -->
+        <div class="progress-bar-container">
+          <div class="progress-bar-fill" id="progress-bar"></div>
+        </div>
+      </div>
+
+      <!-- Bloc d'erreur (masqué par défaut) -->
+      <div class="error-container" id="error-container" style="display: none;">
+        <div class="error-icon">
+          <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="#f87171" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="12" y1="8" x2="12" y2="12"></line>
+            <line x1="12" y1="16" x2="12.01" y2="16"></line>
+          </svg>
+        </div>
+        <div class="error-content">
+          <h3 class="error-title">Échec du démarrage</h3>
+          <p class="error-text" id="error-text">Impossible de joindre le service Docker.</p>
+          <div class="error-hints">
+            <p>💡 <strong>Conseils :</strong></p>
+            <ul>
+              <li>Assurez-vous que <strong>Docker Desktop</strong> est installé et lancé.</li>
+              <li>Sur Windows, vérifiez que le backend <strong>WSL2</strong> est actif.</li>
+              <li>Consultez les détails dans la console ci-dessous.</li>
+            </ul>
+          </div>
+          <div class="error-actions">
+            <button class="btn btn-primary" id="btn-retry">Réessayer</button>
+            <button class="btn btn-secondary" id="btn-quit">Quitter</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Console de logs en direct (rétractable) -->
+      <div class="console-wrapper">
+        <button class="console-toggle" id="console-toggle">
+          <span class="toggle-icon">▶</span>
+          <span>Journal d'orchestration Docker</span>
+          <span class="log-counter" id="log-counter">0 événements</span>
+        </button>
+        <div class="console-drawer" id="console-drawer">
+          <div class="console-header">
+            <span>Terminal stdout/stderr</span>
+            <button class="btn-clear-logs" id="btn-clear-logs">Effacer</button>
+          </div>
+          <div class="console-output" id="console-output">
+            <div class="log-line log-system">[Système] Initialisation du wrapper DeepTutor Desktop...</div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Pied de page -->
+    <footer class="app-footer">
+      <div class="footer-left">
+        <span class="status-indicator-dot"></span>
+        <span class="footer-state" id="footer-state">En cours d'exécution</span>
+      </div>
+      <div class="footer-right">
+        <a href="#" class="footer-link" id="link-github">HKUDS/DeepTutor</a>
+        <span class="footer-sep">•</span>
+        <span class="footer-version">v1.0.0</span>
+      </div>
+    </footer>
+  </div>
+
+  <script src="splash.js"></script>
+</body>
+</html>

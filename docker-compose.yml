@@ -1,0 +1,24 @@
+services:
+  deeptutor:
+    image: ghcr.io/hkuds/deeptutor:latest
+    container_name: deeptutor
+    restart: unless-stopped
+    ports:
+      - "${DEEPTUTOR_PORT:-3782}:3782"
+      - "${DEEPTUTOR_BACKEND_PORT:-8001}:8001"
+    volumes:
+      # Montage des données persistantes (paramètres, modèles configurés, sessions, livres, bases de connaissances)
+      - ./data:/app/data
+    env_file:
+      - path: .env
+        required: false
+    environment:
+      - DEEPTUTOR_PORT=${DEEPTUTOR_PORT:-3782}
+      - DEEPTUTOR_BACKEND_PORT=${DEEPTUTOR_BACKEND_PORT:-8001}
+    extra_hosts:
+      # Permet aux conteneurs de joindre des modèles locaux (Ollama, LM Studio, vLLM) sur la machine hôte
+      - "host.docker.internal:host-gateway"
+
+networks:
+  default:
+    name: deeptutor-net
