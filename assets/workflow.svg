@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 240" width="100%" height="100%">
+  <defs>
+    <linearGradient id="stepBg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#141c30" />
+      <stop offset="100%" stop-color="#0b0f1d" />
+    </linearGradient>
+    <linearGradient id="neonCyan" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00f2fe" />
+      <stop offset="100%" stop-color="#4facfe" />
+    </linearGradient>
+    <linearGradient id="neonGreen" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#38ef7d" />
+      <stop offset="100%" stop-color="#11998e" />
+    </linearGradient>
+    <linearGradient id="neonPurple" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#a855f7" />
+      <stop offset="100%" stop-color="#6366f1" />
+    </linearGradient>
+    <filter id="cardShadow" x="-10%" y="-10%" width="120%" height="130%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#000000" flood-opacity="0.6"/>
+    </filter>
+  </defs>
+
+  <style>
+    .step-card { rx: 14px; fill: url(#stepBg); stroke: rgba(255, 255, 255, 0.1); stroke-width: 1.5; filter: url(#cardShadow); }
+    .step-number { font-family: 'Segoe UI', system-ui, sans-serif; font-size: 26px; font-weight: 900; }
+    .step-title { font-family: 'Segoe UI', system-ui, sans-serif; font-size: 16px; font-weight: 700; fill: #ffffff; }
+    .step-desc { font-family: 'Segoe UI', system-ui, sans-serif; font-size: 12.5px; fill: #94a3b8; }
+    .arrow { fill: none; stroke: #38bdf8; stroke-width: 2.5; stroke-dasharray: 6 4; }
+  </style>
+
+  <rect width="1000" height="240" fill="#06080f" rx="16" />
+
+  <!-- STEP 1 -->
+  <g transform="translate(30, 25)">
+    <rect width="280" height="190" class="step-card" stroke="#00f2fe" stroke-opacity="0.3" />
+    <circle cx="45" cy="45" r="22" fill="rgba(0, 242, 254, 0.15)" stroke="#00f2fe" stroke-width="2" />
+    <text x="45" y="54" text-anchor="middle" fill="#00f2fe" class="step-number">1</text>
+    <text x="80" y="42" class="step-title">Télécharger le Binaire</text>
+    <text x="80" y="60" fill="#38ef7d" font-family="'Segoe UI', sans-serif" font-size="12" font-weight="600">Releases GitHub</text>
+    
+    <text x="25" y="105" class="step-desc">Récupérez l'installeur officiel :</text>
+    <text x="25" y="130" fill="#e2e8f0" font-family="monospace" font-size="12">🪟 Windows : .exe (NSIS / Portable)</text>
+    <text x="25" y="152" fill="#e2e8f0" font-family="monospace" font-size="12">🐧 Linux : .AppImage / .deb</text>
+    <text x="25" y="180" fill="#64748b" font-family="'Segoe UI', sans-serif" font-size="11">Aucun clone de dépôt ni npm requis.</text>
+  </g>
+
+  <!-- Arrow 1 -> 2 -->
+  <path d="M 325 120 L 355 120" class="arrow" />
+  <polygon points="355,115 365,120 355,125" fill="#38bdf8" />
+
+  <!-- STEP 2 -->
+  <g transform="translate(380, 25)">
+    <rect width="280" height="190" class="step-card" stroke="#a855f7" stroke-opacity="0.3" />
+    <circle cx="45" cy="45" r="22" fill="rgba(168, 85, 247, 0.15)" stroke="#a855f7" stroke-width="2" />
+    <text x="45" y="54" text-anchor="middle" fill="#a855f7" class="step-number">2</text>
+    <text x="80" y="42" class="step-title">Docker Desktop</text>
+    <text x="80" y="60" fill="#a855f7" font-family="'Segoe UI', sans-serif" font-size="12" font-weight="600">Prérequis unique</text>
+
+    <text x="25" y="105" class="step-desc">Vérifiez que Docker est installé :</text>
+    <text x="25" y="130" fill="#e2e8f0" font-family="monospace" font-size="12">✅ Docker Desktop (WSL2) ou</text>
+    <text x="25" y="152" fill="#e2e8f0" font-family="monospace" font-size="12">✅ Démon Docker (Linux)</text>
+    <text x="25" y="180" fill="#64748b" font-family="'Segoe UI', sans-serif" font-size="11">L'app peut démarrer le démon auto.</text>
+  </g>
+
+  <!-- Arrow 2 -> 3 -->
+  <path d="M 675 120 L 705 120" class="arrow" />
+  <polygon points="705,115 715,120 705,125" fill="#38bdf8" />
+
+  <!-- STEP 3 -->
+  <g transform="translate(730, 25)">
+    <rect width="240" height="190" class="step-card" stroke="#38ef7d" stroke-opacity="0.3" />
+    <circle cx="45" cy="45" r="22" fill="rgba(56, 239, 125, 0.15)" stroke="#38ef7d" stroke-width="2" />
+    <text x="45" y="54" text-anchor="middle" fill="#38ef7d" class="step-number">3</text>
+    <text x="80" y="42" class="step-title">Lancer &amp; Apprendre</text>
+    <text x="80" y="60" fill="#38ef7d" font-family="'Segoe UI', sans-serif" font-size="12" font-weight="600">Expérience 100% Native</text>
+
+    <text x="20" y="105" class="step-desc">Double-cliquez sur l'icône :</text>
+    <text x="20" y="128" fill="#e2e8f0" font-family="'Segoe UI', sans-serif" font-size="12">⚡ Pull &amp; Up automatiques</text>
+    <text x="20" y="148" fill="#e2e8f0" font-family="'Segoe UI', sans-serif" font-size="12">✨ Splashscreen de boot</text>
+    <text x="20" y="168" fill="#e2e8f0" font-family="'Segoe UI', sans-serif" font-size="12">🛑 Arrêt propre à la sortie</text>
+  </g>
+</svg>

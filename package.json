@@ -5,11 +5,17 @@
   "main": "src/main/index.js",
   "author": "DeepTutor Desktop Team",
   "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mattmathbg/DeepTutor-Desktop.git"
+  },
+  "homepage": "https://github.com/mattmathbg/DeepTutor-Desktop#readme",
   "scripts": {
     "start": "electron .",
     "dev": "electron . --enable-logging",
     "package:win": "electron-builder --win",
-    "package:linux": "electron-builder --linux AppImage deb"
+    "package:linux": "electron-builder --linux AppImage deb",
+    "release": "electron-builder --publish always"
   },
   "dependencies": {
     "dotenv": "^16.4.7"
@@ -23,6 +29,11 @@
     "productName": "DeepTutor",
     "directories": {
       "output": "release"
+    },
+    "publish": {
+      "provider": "github",
+      "owner": "mattmathbg",
+      "repo": "DeepTutor-Desktop"
     },
     "files": [
       "src/**/*"
