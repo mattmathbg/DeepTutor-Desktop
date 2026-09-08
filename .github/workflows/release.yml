@@ -35,6 +35,8 @@ jobs:
 
       - name: Build Windows Executable
         run: npm run build:win
+        env:
+          CSC_IDENTITY_AUTO_DISCOVERY: false
 
       - name: Publish to GitHub Releases
         uses: softprops/action-gh-release@v2

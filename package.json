@@ -13,7 +13,7 @@
   "scripts": {
     "start": "electron .",
     "dev": "electron . --enable-logging",
-    "build:win": "electron-builder --win",
+    "build:win": "electron-builder --win --publish never",
     "package:win": "electron-builder --win",
     "package:linux": "electron-builder --linux AppImage deb",
     "release": "electron-builder --publish always"
