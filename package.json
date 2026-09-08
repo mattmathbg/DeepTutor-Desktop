@@ -13,6 +13,7 @@
   "scripts": {
     "start": "electron .",
     "dev": "electron . --enable-logging",
+    "build:win": "electron-builder --win",
     "package:win": "electron-builder --win",
     "package:linux": "electron-builder --linux AppImage deb",
     "release": "electron-builder --publish always"
@@ -48,6 +49,17 @@
         "portable"
       ],
       "icon": "src/renderer/assets/icon.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "DeepTutor",
+      "artifactName": "${productName}-Setup-${version}.${ext}"
+    },
+    "portable": {
+      "artifactName": "${productName}-Portable-${version}.${ext}"
     },
     "linux": {
       "target": [
